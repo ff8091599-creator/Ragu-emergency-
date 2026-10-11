@@ -1,0 +1,44 @@
+:root{--bg:#050000;--panel:#140505;--line:#3a0d0d;--red:#ff1f2d;--red2:#b3000f;--txt:#fbeaea;--mute:#b78a8a;--ok:#3ddc84}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,"Noto Sans Tamil",Roboto,sans-serif}
+body{min-height:100dvh;background:radial-gradient(120% 60% at 50% 0%,#2a0508 0%,var(--bg) 60%)}
+.app{max-width:480px;margin:0 auto;padding:calc(14px + env(safe-area-inset-top)) 16px calc(24px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px}
+header{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;letter-spacing:.08em;font-size:15px}
+.brand b{color:var(--red)}
+.pulse-dot{width:9px;height:9px;border-radius:50%;background:var(--red);margin-right:8px;box-shadow:0 0 10px var(--red)}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{background:none;border:0;color:var(--mute);padding:8px 14px;font-size:14px}
+.lang button.on{background:var(--red2);color:#fff}
+.sos-wrap{display:grid;place-items:center;padding:26px 0 12px}
+.sos{width:min(68vw,270px);aspect-ratio:1;border-radius:50%;border:2px solid #ff6b74;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+ background:radial-gradient(circle at 35% 30%,#ff4c57,var(--red) 40%,var(--red2) 100%);
+ box-shadow:0 0 0 10px rgba(255,31,45,.12),0 0 50px 8px rgba(255,31,45,.55),inset 0 -10px 30px rgba(0,0,0,.4);animation:glow 2.4s ease-in-out infinite}
+.sos:active{transform:scale(.96)}
+.sos-t{font-size:64px;font-weight:900;letter-spacing:.06em}
+.sos small{font-size:13px;max-width:70%;opacity:.9}
+@keyframes glow{50%{box-shadow:0 0 0 22px rgba(255,31,45,.05),0 0 80px 18px rgba(255,31,45,.75),inset 0 -10px 30px rgba(0,0,0,.4)}}
+.btn{display:flex;justify-content:center;align-items:center;gap:10px;width:100%;min-height:56px;border-radius:16px;font-size:17px;font-weight:600;text-decoration:none;border:1px solid var(--red);color:#fff;background:transparent;padding:12px}
+.btn.call{background:linear-gradient(180deg,#d4101c,var(--red2));box-shadow:0 6px 24px rgba(255,31,45,.3)}
+.btn.ghost{color:var(--txt);border-color:var(--line);background:var(--panel)}
+.btn.cancel{background:#fff;color:#000;border:0;font-size:20px;min-height:64px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px}
+.card h2{margin:0 0 4px;font-size:17px}.card h3{margin:14px 0 6px;font-size:14px;color:var(--mute)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.status{margin:2px 0 0;font-size:14px;color:var(--mute)}
+.toggle{background:var(--red2);color:#fff;border:0;border-radius:12px;padding:12px 14px;font-weight:600;min-width:112px}
+.voice[data-state=on] .status,.voice[data-state=hear] .status,.voice[data-state=heard] .status{color:var(--ok)}
+.voice[data-state=denied] .status,.voice[data-state=err] .status,.voice[data-state=unsup] .status,.voice[data-state=insecure] .status{color:#ff7a82}
+.wave{display:flex;gap:5px;align-items:center;justify-content:center;height:40px;margin:12px 0 6px}
+.wave i{width:5px;height:6px;border-radius:3px;background:#4a2023}
+.voice[data-state=on] .wave i,.voice[data-state=hear] .wave i{background:var(--ok);animation:w 1.2s ease-in-out infinite}
+.voice[data-state=hear] .wave i{animation-duration:.45s}
+.wave i:nth-child(2n){animation-delay:.15s!important}.wave i:nth-child(3n){animation-delay:.3s!important}
+@keyframes w{50%{height:34px}}
+.note{font-size:13px;color:var(--mute);margin:6px 0 0;line-height:1.5}
+ul{margin:0;padding-left:20px;font-size:14px;line-height:1.7}.native li::marker{color:var(--red)}
+.overlay{position:fixed;inset:0;z-index:10;background:rgba(5,0,0,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:24px;text-align:center}
+.overlay[hidden]{display:none}.overlay .btn{max-width:360px}
+.ring{width:190px;height:190px;border-radius:50%;border:6px solid var(--red);display:grid;place-items:center;box-shadow:0 0 60px rgba(255,31,45,.6);animation:glow 1s infinite}
+.ring span{font-size:96px;font-weight:900}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
